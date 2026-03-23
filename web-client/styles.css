@@ -1,0 +1,38 @@
+:root {
+  color-scheme: dark;
+  --bg: #0d1418;
+  --panel: #172228;
+  --panel-soft: #1d2b32;
+  --text: #edf6f2;
+  --muted: #9db1aa;
+  --accent: #21c17a;
+  --border: rgba(255,255,255,0.08);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: linear-gradient(180deg, #0d1418, #111d22);
+  color: var(--text);
+}
+.app-shell { display: grid; grid-template-columns: 360px 1fr; min-height: 100vh; }
+.sidebar { border-right: 1px solid var(--border); padding: 20px; background: rgba(0,0,0,0.15); }
+.brand-block h1 { margin: 0; }
+.brand-block p, .muted { color: var(--muted); }
+.search-box { width: 100%; margin: 18px 0 12px; border-radius: 14px; border: 1px solid var(--border); background: var(--panel); color: var(--text); padding: 12px 14px; }
+.tab-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 14px; }
+.tab-btn, .action-grid button { border: 1px solid var(--border); background: var(--panel); color: var(--text); border-radius: 14px; padding: 10px 12px; cursor: pointer; }
+.tab-btn.active { background: rgba(33,193,122,0.2); border-color: rgba(33,193,122,0.45); }
+.list-container, .chat-preview { display: grid; gap: 10px; }
+.list-item { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 14px; text-align: left; color: inherit; }
+.workspace { padding: 24px; }
+.hero-card, .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 24px; padding: 18px; }
+.hero-card { display: flex; justify-content: space-between; align-items: start; gap: 16px; margin-bottom: 18px; }
+.hero-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.hero-pills span { background: rgba(33,193,122,0.14); color: #c6ffe2; border: 1px solid rgba(33,193,122,0.28); border-radius: 999px; padding: 8px 10px; font-size: 12px; }
+.grid-layout { display: grid; grid-template-columns: repeat(2, minmax(280px, 1fr)); gap: 18px; }
+.wide-panel { grid-column: span 2; }
+.action-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.qr-box { border-radius: 20px; border: 1px dashed rgba(33,193,122,0.5); background: var(--panel-soft); padding: 28px 16px; text-align: center; font-weight: 700; letter-spacing: 1px; }
+.summary-list { margin: 0; padding-left: 18px; color: var(--muted); }
+@media (max-width: 980px) { .app-shell { grid-template-columns: 1fr; } .grid-layout { grid-template-columns: 1fr; } .wide-panel { grid-column: span 1; } }

@@ -1,0 +1,21 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function signedIn() { return request.auth != null; }
+    function isSelf(userId) { return signedIn() && request.auth.uid == userId; }
+
+    match /chat_media/{chatId}/{allPaths=**} {
+      allow read, write: if signedIn();
+    }
+
+    match /status_media/{userId}/{allPaths=**} {
+      allow read: if signedIn();
+      allow write: if isSelf(userId);
+    }
+
+    match /profile_photos/{userId}/{allPaths=**} {
+      allow read: if signedIn();
+      allow write: if isSelf(userId);
+    }
+  }
+}
